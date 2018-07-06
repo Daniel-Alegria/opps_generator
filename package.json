@@ -1,0 +1,30 @@
+{
+  "name": "opps-generator",
+  "version": "0.0.0",
+  "description": "OPPS generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "Daniel-Alegria/opps_generator",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": "https://github.com/Daniel-Alegria"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "OPPS-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.19.0",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}

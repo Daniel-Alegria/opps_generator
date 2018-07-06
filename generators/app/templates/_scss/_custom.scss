@@ -1,0 +1,565 @@
+// ==============================
+// =         Variables          =
+// ==============================
+
+// - Typography
+// ~~~~~~~~~~~~~
+
+// Fonts
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:      <%= fontFamily %>;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:            $font-family-sans-serif;
+// stylelint-enable value-keyword-case
+$font-size-base:              1rem; // Assumes the browser default, typically `16px`
+$font-size-lg:                ($font-size-base * 1.25);
+$font-size-sm:                ($font-size-base * .875);
+
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-bold:            700;
+
+$font-weight-base:            $font-weight-normal;
+$line-height-base:            1.5;
+
+$h1-font-size:                $font-size-base * 2.5;
+$h2-font-size:                $font-size-base * 2;
+$h3-font-size:                $font-size-base * 1.75;
+$h4-font-size:                $font-size-base * 1.5;
+$h5-font-size:                $font-size-base * 1.25;
+$h6-font-size:                $font-size-base;
+
+// Color system
+// ============
+
+// stylelint-disable
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000;
+
+$blue:    #007bff;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #e83e8c;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #28a745;
+$teal:    #20c997;
+$cyan:    #17a2b8;
+$cs-orange: #FD5C27;
+
+
+$theme-colors:(
+    primary: <%= primaryColor %>,
+    secondary: <%= secondaryColor %>,
+    light: $gray-100,
+    dark: $gray-800
+);
+
+
+// Body
+// Settings for the `<body>` element.
+
+$body-bg:                   <%= bodyBackgroundColor %>;
+$body-color:                <%= bodyFontColor %>;
+
+// Links
+// Style anchor elements.
+
+$link-color:                $blue;
+$link-decoration:           none;
+$link-hover-color:          darken($blue, 15%);
+$link-hover-decoration:     underline;
+
+// Components:
+// =============
+
+// Images
+// ~~~~~~~~~~~~~
+
+$banner:          '../images/banner.png';
+$logo:            '../images/Logo.png';
+$cs-logo:         '../images/CSLogo.png';
+
+// Alerts
+// ~~~~~~~~~~~~~
+
+$alert-bg:                            $gray-600;
+$alert-color:                         $gray-900;
+$alert-border-color:                  $gray-900;
+
+// - Navbar
+// ~~~~~~~~~~~~~
+
+$navbar-background-color:             <%= navbarBackgroundColor %>;
+$navbar-custom-color:                 <%= navbarFontColor %>;
+$navbar-custom-hover-color:           darken($navbar-custom-color, 10%);
+$navbar-custom-active-color:          darken($navbar-custom-color, 10%);
+$navbar-custom-disabled-color:        lighten($navbar-custom-color, 10%);
+$navbar-custom-toggler-icon-bg:       str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-custom-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23");
+
+$navbar-custom-toggler-border-color:  rgba($blue, .1);
+
+$navbar-padding-y:                  0px;
+$navbar-padding-x:                  0px;
+
+// - Footer
+// ~~~~~~~~~~~~~
+
+$footer-background-color:           theme-color("light");;
+$footer-text-color:                 $gray-800;
+$footer-link-color:                 $cs-orange;
+
+// - Carousels
+// ~~~~~~~~~~~~~
+
+$carousel-background:               url($banner);
+$carousel-height:                   400px;
+
+// - Jumbotron
+// ~~~~~~~~~~~~~
+
+$jumbotron-padding:                 2rem;
+$jumbotron-background:              url($banner);
+$jumbotron-height:                  300px;
+
+// =============
+// Page / Section Specific:
+// =============
+
+$section-padding:                   15px 0;
+
+// Safety Message
+
+$safety-message-bg:                 $gray-100;
+$safety-message-color:              $gray-900;
+$signature-color:                   $gray-700;
+
+// Support
+
+$support-border-color:              $gray-900;
+$support-header-bg:                 #e9ecef;
+$support-bg:                        $gray-100;
+$support-link-color:                $link-color;
+$support-color:                     $gray-900;
+$support-header-font-size:          1rem;
+$support-font-size:                 0.75rem;
+
+// Call to Action
+
+$call-to-action-bg:                 $gray-700;
+$call-to-action-color:              $gray-900;
+
+// Catalog
+
+$catalog-bg:                        #FFF;
+$catalog-color:                     $gray-900;
+$catalog-header-bg:                 #e9ecef;
+$catalog-header-color:              $catalog-color;
+$catalog-link-color:                $catalog-color;
+
+// Imports (They have to remain here under the variables)
+
+// Required
+@import "node_modules/bootstrap/scss/_functions.scss";
+@import "node_modules/bootstrap/scss/_variables.scss";
+@import "node_modules/bootstrap/scss/_mixins.scss";
+/*
+* ==============================
+* =         Custom CSS         =
+* ==============================
+*/
+
+/* - Colors
+*  =============
+*/
+
+@import "node_modules/bootstrap/scss/_root.scss";
+
+/* - Typography
+*  =============
+*/
+
+/* Headings */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+h1, .h1 { font-size: $h1-font-size; }
+h2, .h2 { font-size: $h2-font-size; }
+h3, .h3 { font-size: $h3-font-size; }
+h4, .h4 { font-size: $h4-font-size; }
+h5, .h5 { font-size: $h5-font-size; }
+h6, .h6 { font-size: $h6-font-size; }
+
+p, blockquote, small {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/* Components:
+* =============
+*/
+
+
+/* Divider
+* ~~~~~~~~~~~~~
+*/
+
+.v-divider {
+  width: 1px;
+  margin: 15px 2px;
+  background: $gray-600;
+  opacity: 0.5;
+}
+
+/* Alerts
+* ~~~~~~~~~~~~~
+*/
+
+.alert {
+    background: $alert-bg;
+    color: $alert-color;
+    border: $alert-border-color;
+    border-radius: 0px;
+    margin: 0;
+}
+
+/*
+*  Buttons
+*  ~~~~~~~~~~~~~
+*/
+
+@import "node_modules/bootstrap/scss/_buttons.scss";
+
+/*
+* Navbar
+* ~~~~~~~~~~~~~
+*/
+
+.navbar-custom {
+  .navbar-brand {
+    color: $navbar-custom-active-color;
+    margin: 0;
+    padding: 0;
+    @include hover-focus {
+      color: $navbar-custom-active-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-custom-color;
+
+      @include hover-focus {
+        color: $navbar-custom-hover-color;
+      }
+
+      &.disabled {
+        color: $navbar-custom-disabled-color;
+      }
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+      color: $navbar-custom-active-color;
+    }
+  }
+
+  .nav-item {
+    color: $navbar-custom-color;
+    padding: 15px 15px 5px 15px;
+    margin-bottom: 10px;
+    position: relative;
+    text-decoration: none;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $navbar-custom-hover-color;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+    }
+    &:hover:before {
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+    a {
+      color: $navbar-custom-color;
+      &:hover {
+        color: $navbar-custom-hover-color
+      }
+    }
+
+  }
+
+  .active {
+    color: $navbar-custom-hover-color !important;
+    opacity: 0.75 !important;
+    &:before {
+      content: "" !important;
+      position: absolute !important;
+      width: 100% !important;
+      height: 2px !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      background-color: $navbar-custom-hover-color !important;
+      -webkit-transform: scaleX(1) !important;
+      transform: scaleX(1) !important;
+      visibility: visible !important;
+    }
+  }
+
+  .navbar-toggler {
+    color: $navbar-custom-color;
+    border-color: $navbar-custom-toggler-border-color;
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-custom-toggler-icon-bg;
+  }
+
+  .navbar-text {
+    color: $navbar-custom-color;
+    a {
+      color: $navbar-custom-active-color;
+
+      @include hover-focus {
+        color: $navbar-custom-active-color;
+      }
+    }
+  }
+}
+
+@media (min-width:801px)  {
+  .navbar-custom {
+      background-color: $navbar-background-color;
+      padding-top: 0;
+      padding-bottom: 0;
+  }
+}
+
+// Temporary Work-Around for Hamburger because the above doesn't work.
+.navbar-expand-md {
+  background-color:  $navbar-background-color;
+}
+
+.navbar-custom span.navbar-toggler-icon {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+color: $navbar-custom-color;
+}
+/* change hamburger button border color */
+button.navbar-toggler.navbar-toggler-right {
+border-color: $navbar-custom-toggler-border-color;
+}
+
+/*
+* Footer
+* ~~~~~~~~~~~~~
+*/
+
+footer {
+  .nav-item {
+    color: $navbar-custom-color;
+    padding: 15px 15px 5px 15px;
+    margin-bottom: 10px;
+    position: relative;
+    text-decoration: none;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $navbar-custom-hover-color;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+    }
+    &:hover:before {
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+    a {
+      color: $navbar-custom-color;
+      &:hover {
+        color: $navbar-custom-hover-color
+      }
+    }
+  }
+
+  .navbar-text {
+    color: $navbar-custom-color;
+    a {
+      color: $navbar-custom-active-color;
+
+      @include hover-focus {
+        color: $navbar-custom-active-color;
+      }
+    }
+  }
+}
+
+/*
+* Carousel
+* ~~~~~~~~~~~~~
+*/
+
+@media (max-width:801px)  {
+  .carousel {
+    display: none !important
+  }
+}
+
+.carousel-background {
+   background-image: $carousel-background;
+   height: $carousel-height;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position-y: -100px;
+ }
+
+.carousel-item {
+    height: 400px;
+}
+
+/*
+* Jumbotron
+* ~~~~~~~~~~~~~
+*/
+
+.jumbotron {
+  display: none !important;
+}
+
+@media (max-width:801px)  {
+  .jumbotron {
+    background-color: $body-bg;
+    background-image: $jumbotron-background;
+    color: $white;
+    display: flex !important;
+    background-size: cover;
+    height: $jumbotron-height;
+    margin-bottom: 0px;
+  }
+}
+
+/*
+* Tables
+* ~~~~~~~~~~~~~
+*/
+
+/*
+* =============
+* Page / Section Specific:
+* =============
+ */
+
+section {
+  padding: $section-padding;
+}
+
+#home {
+
+  #support {
+    .card {
+        border-color: $support-border-color !important;
+    }
+
+    .card-header {
+        background-color: $support-bg;
+        color: $support-color !important;
+    }
+
+    .card-header {
+      background-color: $support-header-bg;
+      a {
+        color: $support-color !important;
+        &:hover {
+          color: darken($support-color, 10%);
+        }
+      }
+    }
+
+    .card-body {
+      background-color: $support-bg;
+      a {
+        color: $support-link-color !important;
+        opacity: 1 !important;
+      }
+    }
+
+    #collapseOne {
+      h3 {
+        font-size: $support-header-font-size !important;
+      }
+      ul {
+        font-size: $support-font-size !important;
+      }
+    }
+  }
+
+  #safety-message {
+    background-color: $safety-message-bg;
+    color: $safety-message-color;
+    .blockquote-footer {
+        color: $signature-color !important;
+    }
+  }
+
+  #call-to-action {
+      color: $call-to-action-color;
+      background-image: url("images/callToAction.jpg") repeat;
+      padding: 50px 15px 25px 15px !important;
+  }
+}
+
+#catalog {
+
+  background-color: $catalog-bg;
+  color: $catalog-color;
+
+  .card-header {
+    background-color: $catalog-header-bg;
+    color: $catalog-header-color;
+  }
+
+  .card a {
+    color: #203243;
+    text-decoration: none !important;
+  }
+
+  tr {
+    cursor: pointer;
+  }
+
+}
